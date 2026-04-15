@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#3b82f6">
+
+<title>Controle Financeiro</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="topo">
+
+<h1>Controle Financeiro</h1>
+
+<div>
+
+<button onclick="exportarExcel()">Exportar Excel</button>
+<button onclick="logout()">Logout</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<input type="text" id="descricao" placeholder="Descrição">
+<input type="number" id="valor" placeholder="Valor">
+
+<select id="tipo">
+<option value="ganho">Ganho</option>
+<option value="gasto">Gasto</option>
+</select>
+
+<select id="categoria">
+
+<option>Salário</option>
+<option>Dízimo</option>
+<option>Dinheiro</option>
+<option>Mercado Livre</option>
+<option>Comida</option>
+<option>Shopee</option>
+<option>Jogos</option>
+<option>Jiu-Jitsu</option>
+<option>Caixinha Nubank</option>
+<option>Corte Cabelo</option>
+<option>Edição Silas</option>
+<option>Mesa de Som</option>
+<option>TCC</option>
+<option>Outros</option>
+
+</select>
+
+<input type="date" id="data">
+
+<button onclick="adicionar()">Adicionar</button>
+
+</div>
+
+<div class="dashboard">
+
+<div class="card dashboard-card">
+<h3>Saldo</h3>
+<h2 id="saldo">R$ 0</h2>
+</div>
+
+<div class="card dashboard-card">
+<h3>Ganhos</h3>
+<h2 id="ganhos">R$ 0</h2>
+</div>
+
+<div class="card dashboard-card">
+<h3>Gastos</h3>
+<h2 id="gastos">R$ 0</h2>
+</div>
+
+</div>
+
+<div class="card">
+
+<h3>Pesquisar</h3>
+<input type="text" id="pesquisa" placeholder="Pesquisar..." onkeyup="carregarTransacoes()">
+
+</div>
+
+<div class="card">
+
+<h3>Filtro por mês</h3>
+<input type="month" id="filtroMes" onchange="carregarTransacoes()">
+
+<select id="ordenar" onchange="carregarTransacoes()">
+<option value="recente">Mais recente</option>
+<option value="antigo">Mais antigo</option>
+</select>
+
+</div>
+
+<div class="card">
+
+<canvas id="grafico"></canvas>
+
+<h3>Ganhos vs Gastos</h3>
+<canvas id="grafico2"></canvas>
+
+</div>
+
+<div class="card">
+
+<h3>Transações</h3>
+<div id="lista"></div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
