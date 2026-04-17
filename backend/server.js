@@ -1,3 +1,4 @@
+
 const express = require("express")
 const cors = require("cors")
 const fs = require("fs")
@@ -12,6 +13,10 @@ const app = express()
 app.use(helmet())
 app.use(cors())
 app.use(express.json())
+
+app.get("/", (req, res) => {
+  res.send("Controle Financeiro Online 🚀");
+});
 
 // Rate limit (anti ataque)
 const limiter = rateLimit({
